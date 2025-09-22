@@ -1,16 +1,17 @@
-:root{
-  --red: #f45050;    /* tu rojo pedido */
-  --blue: #0b15a3;   /* texto principal azul */
-  --pink: #f8c0cc;   /* tono rosa para dropdown */
-  --nav-text: #ffffff;
+:root {
+  --red: #f45050;   /* Tu rojo original para el texto */
+  --red-claro: #f8c0cc; /* Un tono más claro para el fondo */
+  --blue: #0b15a3;
+  --pink: #f8c0cc;
+  --nav-text: var(--red); /* Usamos el rojo original para el texto del menú */
 }
 
 /* Fuentes: Montserrat (sans) y Merriweather (serif) cargadas en HTML.
-   Usaremos Montserrat para navbar y títulos, Merriweather para cuerpos si hace falta. */
+      Usaremos Montserrat para navbar y títulos, Merriweather para cuerpos si hace falta. */
 
 body {
   font-family: 'Merriweather', serif; /* cuerpo en serif (puedes cambiar a sans si prefieres) */
-  color: var(--blue);                 /* TODO el texto principal en azul #0b15a3 */
+  color: var(--blue);                   /* TODO el texto principal en azul #0b15a3 */
   background-color: #ffffff;
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
@@ -19,7 +20,7 @@ body {
 
 /* NAVBAR: fondo rojo, texto blanco, fuente sans bold */
 .navbar {
-  background-color: var(--red) !important;
+  background-color: var(--red-claro) !important;
 }
 .navbar .navbar-brand, .navbar .nav-link {
   font-family: 'Montserrat', sans-serif;
@@ -84,7 +85,7 @@ body {
 .book-card {
   position: relative;
   width: 100%;
-  height: 260px;             /* alto fijo para consistencia */
+  height: 260px;          /* alto fijo para consistencia */
   overflow: hidden;
   border-radius: 8px;
   background: #fff;
@@ -108,12 +109,15 @@ body {
   bottom: 12px;
   transform: translateX(-50%);
   display: none;
-  padding: 6px 10px;
-  background-color: rgba(11,21,163,0.95);
-  color: white;
+  padding: 6px 12px;
+  background-color: var(--red); /* Fondo rojo */
+  color: #fff; /* Texto blanco */
   border-radius: 4px;
   font-weight: 600;
+  font-size: 0.9rem; /* Tamaño de fuente más pequeño */
   font-family: 'Montserrat', sans-serif;
+  white-space: nowrap; /* Evita que el texto se parta en dos líneas */
+  text-transform: uppercase;
 }
 .book-card:hover .card-overlay-btn { display: inline-block; }
 
