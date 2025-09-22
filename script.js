@@ -1,4 +1,4 @@
-let books = []; // Se cargan desde books.json
+let books = [];
 const resultsDiv = document.getElementById("results");
 
 const radios = document.querySelectorAll('input[type="radio"]');
@@ -32,15 +32,30 @@ function displayResults(filteredBooks) {
     card.className = "book-card";
     card.innerHTML = `
       <img src="${book.cover}" alt="${book.title}">
-      <p><strong>${book.title}</strong></p>
-      <p><em>${book.author}</em></p>
-      <a href="${book.amazon}" target="_blank">Comprar en Amazon</a>
+      <button class="view-btn">Ver libro</button>
     `;
     resultsDiv.appendChild(card);
+
+    // Modal
+    const modal = document.getElementById("book-modal");
+    const closeBtn = modal.querySelector(".close");
+
+    card.querySelector(".view-btn").addEventListener("click", () => {
+      modal.style.display = "block";
+      document.getElementById("modal-title").textContent = book.title;
+      document.getElementById("modal-author").textContent = "Autor: " + book.author;
+      document.getElementById("modal-genre").textContent = "Género: " + book.genre;
+      document.getElementById("modal-mood").textContent = "Estado de ánimo: " + book.mood;
+      document.getElementById("modal-length").textContent = "Longitud: " + book.length;
+      document.getElementById("modal-amazon").href = book.amazon;
+    });
+
+    closeBtn.onclick = () => modal.style.display = "none";
+    window.onclick = e => { if(e.target == modal) modal.style.display = "none"; }
   });
 }
 
-// Cargar libros desde books.json
+// Cargar libros desde JSON
 fetch("books.json")
   .then(response => response.json())
   .then(data => {
