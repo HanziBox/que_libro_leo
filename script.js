@@ -9,24 +9,28 @@ const modalMood = document.getElementById("modal-mood");
 const modalLength = document.getElementById("modal-length");
 const modalAmazon = document.getElementById("modal-amazon");
 
+// Escuchar cambios en los filtros
 document.querySelectorAll('input[type="radio"]').forEach(radio => {
   radio.addEventListener("change", updateResults);
 });
 
+// Función para filtrar y mostrar libros según filtros
 function updateResults() {
   const mood = document.querySelector('input[name="mood"]:checked')?.value;
   const genre = document.querySelector('input[name="genre"]:checked')?.value;
   const length = document.querySelector('input[name="length"]:checked')?.value;
 
-  const filtered = books.filter(book => 
-    (!mood || book.mood === mood) &&
-    (!genre || book.genre === genre) &&
-    (!length || book.length === length)
-  );
+  const filtered = books.filter(book => {
+    const moodMatch = !mood || book.mood === mood;
+    const genreMatch = !genre || book.genre === genre;
+    const lengthMatch = !length || book.length === length;
+    return moodMatch && genreMatch && lengthMatch;
+  });
 
   displayResults(filtered);
 }
 
+// Función para renderizar libros
 function displayResults(filteredBooks) {
   resultsDiv.innerHTML = "";
   if (filteredBooks.length === 0) {
@@ -43,6 +47,7 @@ function displayResults(filteredBooks) {
     `;
     resultsDiv.appendChild(card);
 
+    // Evento para mostrar modal
     card.querySelector(".view-btn").addEventListener("click", () => {
       modalTitle.textContent = book.title;
       modalCover.src = book.cover;
@@ -59,5 +64,8 @@ function displayResults(filteredBooks) {
 // Cargar JSON de libros
 fetch("books.json")
   .then(res => res.json())
-  .then(data => { books = data; updateResults(); })
+  .then(data => {
+    books = data;
+    displayResults(books);  // <-- mostrar todos al inicio
+  })
   .catch(err => console.error("Error cargando libros:", err));
