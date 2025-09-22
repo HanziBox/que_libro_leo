@@ -8,7 +8,7 @@
 <body>
   <h1>Dime qué libro leo</h1>
 
-  <!-- Filtros de ejemplo -->
+  <!-- Filtros -->
   <div id="filters">
     <div>
       <p>Estado de ánimo:</p>
@@ -31,6 +31,19 @@
   </div>
 
   <div id="results"></div>
+
+  <!-- Modal -->
+  <div id="book-modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 id="modal-title"></h2>
+      <p id="modal-author"></p>
+      <p id="modal-genre"></p>
+      <p id="modal-mood"></p>
+      <p id="modal-length"></p>
+      <a id="modal-amazon" href="#" target="_blank">Comprar en Amazon</a>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
