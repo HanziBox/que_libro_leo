@@ -1,10 +1,22 @@
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f8f9fa;
+  font-family: 'Open Sans', sans-serif;
+  background-color: #FFFFFF;
+  color: #333333;
 }
 
-#filters p {
-  font-weight: bold;
+.navbar-brand {
+  font-family: 'Merriweather', serif;
+  font-size: 1.5rem;
+  color: #2C3E50 !important;
+}
+
+.navbar {
+  background-color: #F8F9FA; /* claro, elegante */
+}
+
+.filter-label {
+  font-weight: 600;
+  color: #2C3E50;
 }
 
 .book-card {
@@ -14,10 +26,14 @@ body {
   margin: 10px;
   overflow: hidden;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  cursor: pointer;
-  background-color: #fff;
-  transition: transform 0.3s;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background-color: #FFFFFF;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.book-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .book-card img {
@@ -25,11 +41,6 @@ body {
   height: 100%;
   object-fit: cover;
   object-position: center;
-  transition: transform 0.3s;
-}
-
-.book-card:hover {
-  transform: scale(1.03);
 }
 
 .view-btn {
@@ -38,13 +49,24 @@ body {
   left: 50%;
   transform: translateX(-50%);
   display: none;
-  padding: 5px 10px;
-  background-color: #0d6efd;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  background-color: #2C3E50;
   color: white;
-  border: none;
   border-radius: 4px;
+  border: none;
 }
 
 .book-card:hover .view-btn {
   display: block;
+}
+
+.modal-title {
+  font-family: 'Merriweather', serif;
+  color: #2C3E50;
+}
+
+.modal-body p {
+  font-family: 'Open Sans', sans-serif;
+  color: #555555;
 }
