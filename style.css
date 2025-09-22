@@ -85,24 +85,23 @@ body {
 /* book-card adaptado a grid: ocupa 100% del column */
 .book-card {
   position: relative;
-  width: 100%;
-  height: auto; /* Se elimina el alto fijo para que se mantenga la proporción */
+  width: 18%;  /* Ancho para 5 libros por fila (dejando un pequeño espacio) */
+  height: auto;
   overflow: hidden;
-  border-radius: 8px;
   background: #fff;
   box-shadow: 0 6px 18px rgba(11,21,163,0.06);
   transition: transform .25s ease, box-shadow .25s ease;
 }
 .book-card img {
   width: 100%;
-  height: 100%;
+  height: auto; /* Se elimina el alto fijo para que se mantenga la proporción */
   object-fit: cover;
   object-position: center;
   display:block;
   transition: transform .35s ease;
 }
 .book-card:hover { transform: translateY(-6px); box-shadow: 0 12px 30px rgba(11,21,163,0.12); }
-.book-card:hover img { transform: scale(1.04); }
+.book-card:hover img { transform: none; } /* Se elimina el efecto de zoom */
 
 .card-overlay-btn {
   position: absolute;
