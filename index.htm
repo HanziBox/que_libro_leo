@@ -2,49 +2,108 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dime qué libro leo</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Dime qué libro leo</h1>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+    <div class="container">
+      <a class="navbar-brand" href="#">Dime qué libro leo</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="#">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Sobre</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-  <!-- Filtros -->
-  <div id="filters">
-    <div>
-      <p>Estado de ánimo:</p>
-      <label><input type="radio" name="mood" value="alegre"> Alegre</label>
-      <label><input type="radio" name="mood" value="reflexivo"> Reflexivo</label>
-      <label><input type="radio" name="mood" value="aventurero"> Aventurero</label>
+  <div class="container">
+    <!-- Filtros -->
+    <div id="filters" class="mb-4 row">
+      <div class="col-md-4">
+        <p>Estado de ánimo:</p>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="mood" value="alegre" id="mood-alegre">
+          <label class="form-check-label" for="mood-alegre">Alegre</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="mood" value="reflexivo" id="mood-reflexivo">
+          <label class="form-check-label" for="mood-reflexivo">Reflexivo</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="mood" value="aventurero" id="mood-aventurero">
+          <label class="form-check-label" for="mood-aventurero">Aventurero</label>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <p>Género:</p>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="genre" value="ficción" id="genre-ficcion">
+          <label class="form-check-label" for="genre-ficcion">Ficción</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="genre" value="fantasía" id="genre-fantasia">
+          <label class="form-check-label" for="genre-fantasia">Fantasía</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="genre" value="clásico" id="genre-clasico">
+          <label class="form-check-label" for="genre-clasico">Clásico</label>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <p>Longitud:</p>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="length" value="corto" id="length-corto">
+          <label class="form-check-label" for="length-corto">Corto</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="length" value="medio" id="length-medio">
+          <label class="form-check-label" for="length-medio">Medio</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="length" value="largo" id="length-largo">
+          <label class="form-check-label" for="length-largo">Largo</label>
+        </div>
+      </div>
     </div>
-    <div>
-      <p>Género:</p>
-      <label><input type="radio" name="genre" value="ficción"> Ficción</label>
-      <label><input type="radio" name="genre" value="fantasía"> Fantasía</label>
-      <label><input type="radio" name="genre" value="clásico"> Clásico</label>
-    </div>
-    <div>
-      <p>Longitud:</p>
-      <label><input type="radio" name="length" value="corto"> Corto</label>
-      <label><input type="radio" name="length" value="medio"> Medio</label>
-      <label><input type="radio" name="length" value="largo"> Largo</label>
+
+    <!-- Resultados -->
+    <div id="results" class="d-flex flex-wrap justify-content-start"></div>
+  </div>
+
+  <!-- Modal profesional -->
+  <div class="modal fade" id="book-modal" tabindex="-1" aria-labelledby="bookModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content shadow-lg rounded">
+        <div class="modal-header">
+          <h5 class="modal-title" id="bookModalLabel"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body d-flex">
+          <img id="modal-cover" src="" alt="" class="img-fluid me-3" style="width:100px; height:150px; object-fit:cover; border-radius:4px;">
+          <div>
+            <p id="modal-author" class="mb-1"></p>
+            <p id="modal-genre" class="mb-1"></p>
+            <p id="modal-mood" class="mb-1"></p>
+            <p id="modal-length" class="mb-1"></p>
+            <a id="modal-amazon" href="#" target="_blank" class="btn btn-primary mt-2">Comprar en Amazon</a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <div id="results"></div>
-
-  <!-- Modal -->
-  <div id="book-modal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2 id="modal-title"></h2>
-      <p id="modal-author"></p>
-      <p id="modal-genre"></p>
-      <p id="modal-mood"></p>
-      <p id="modal-length"></p>
-      <a id="modal-amazon" href="#" target="_blank">Comprar en Amazon</a>
-    </div>
-  </div>
-
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
