@@ -10,63 +10,21 @@ body {
   color: #2C3E50 !important;
 }
 
-.navbar {
-  background-color: #F8F9FA; /* claro, elegante */
-}
-
-.filter-label {
-  font-weight: 600;
-  color: #2C3E50;
-}
-
-.book-card {
-  position: relative;
-  width: 150px;
-  height: 220px;
-  margin: 10px;
-  overflow: hidden;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  background-color: #FFFFFF;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.book-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-}
-
-.book-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
-.view-btn {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: none;
-  padding: 6px 12px;
-  font-size: 0.9rem;
-  background-color: #2C3E50;
-  color: white;
-  border-radius: 4px;
-  border: none;
-}
-
-.book-card:hover .view-btn {
-  display: block;
-}
-
-.modal-title {
+.navbar-nav .nav-link {
   font-family: 'Merriweather', serif;
-  color: #2C3E50;
+  font-size: 1rem;
+  color: #2C3E50 !important;
+  margin-left: 1rem;
+  transition: color 0.3s;
 }
 
-.modal-body p {
-  font-family: 'Open Sans', sans-serif;
-  color: #555555;
+.navbar-nav .nav-link:hover,
+.navbar-nav .dropdown-item:hover {
+  color: #007BFF !important; /* azul elegante para hover */
+}
+
+.dropdown-menu {
+  border-radius: 0.25rem;
+  border: 1px solid #eaeaea;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
