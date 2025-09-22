@@ -1,8 +1,15 @@
 let books = [];
 const resultsDiv = document.getElementById("results");
+const bootstrapModal = new bootstrap.Modal(document.getElementById('book-modal'));
+const modalTitle = document.getElementById("bookModalLabel");
+const modalCover = document.getElementById("modal-cover");
+const modalAuthor = document.getElementById("modal-author");
+const modalGenre = document.getElementById("modal-genre");
+const modalMood = document.getElementById("modal-mood");
+const modalLength = document.getElementById("modal-length");
+const modalAmazon = document.getElementById("modal-amazon");
 
-const radios = document.querySelectorAll('input[type="radio"]');
-radios.forEach(radio => {
+document.querySelectorAll('input[type="radio"]').forEach(radio => {
   radio.addEventListener("change", updateResults);
 });
 
@@ -32,37 +39,25 @@ function displayResults(filteredBooks) {
     card.className = "book-card";
     card.innerHTML = `
       <img src="${book.cover}" alt="${book.title}">
-      <button class="view-btn">Ver libro</button>
+      <button class="view-btn btn btn-sm">Ver libro</button>
     `;
     resultsDiv.appendChild(card);
 
-    // Modal
-    const modal = document.getElementById("book-modal");
-    const closeBtn = modal.querySelector(".close");
-
     card.querySelector(".view-btn").addEventListener("click", () => {
-      modal.style.display = "block";
-      document.getElementById("modal-title").textContent = book.title;
-      document.getElementById("modal-author").textContent = "Autor: " + book.author;
-      document.getElementById("modal-genre").textContent = "Género: " + book.genre;
-      document.getElementById("modal-mood").textContent = "Estado de ánimo: " + book.mood;
-      document.getElementById("modal-length").textContent = "Longitud: " + book.length;
-      document.getElementById("modal-amazon").href = book.amazon;
+      modalTitle.textContent = book.title;
+      modalCover.src = book.cover;
+      modalAuthor.textContent = "Autor: " + book.author;
+      modalGenre.textContent = "Género: " + book.genre;
+      modalMood.textContent = "Estado de ánimo: " + book.mood;
+      modalLength.textContent = "Longitud: " + book.length;
+      modalAmazon.href = book.amazon;
+      bootstrapModal.show();
     });
-
-    closeBtn.onclick = () => modal.style.display = "none";
-    window.onclick = e => { if(e.target == modal) modal.style.display = "none"; }
   });
 }
 
-// Cargar libros desde JSON
+// Cargar JSON de libros
 fetch("books.json")
-  .then(response => response.json())
-  .then(data => {
-    books = data;
-    displayResults(books);
-  })
-  .catch(err => {
-    console.error("Error cargando libros:", err);
-    resultsDiv.innerHTML = "<p>Error cargando libros. Revisa el archivo books.json.</p>";
-  });
+  .then(res => res.json())
+  .then(data => { books = data; updateResults(); })
+  .catch(err => console.error("Error cargando libros:", err));
