@@ -1,15 +1,11 @@
-let books = []; // Aquí se cargarán los libros desde books.json
+let books = []; // Se cargan desde books.json
 const resultsDiv = document.getElementById("results");
 
-// Seleccionamos todos los radio buttons
 const radios = document.querySelectorAll('input[type="radio"]');
-
-// Agregamos un listener a cada radio button para actualizar resultados automáticamente
 radios.forEach(radio => {
   radio.addEventListener("change", updateResults);
 });
 
-// Función para actualizar los resultados según los filtros seleccionados
 function updateResults() {
   const mood = document.querySelector('input[name="mood"]:checked')?.value;
   const genre = document.querySelector('input[name="genre"]:checked')?.value;
@@ -24,7 +20,6 @@ function updateResults() {
   displayResults(filtered);
 }
 
-// Función para mostrar los resultados en pantalla
 function displayResults(filteredBooks) {
   resultsDiv.innerHTML = "";
   if (filteredBooks.length === 0) {
@@ -50,7 +45,7 @@ fetch("books.json")
   .then(response => response.json())
   .then(data => {
     books = data;
-    displayResults(books); // Mostrar todos los libros al inicio
+    displayResults(books);
   })
   .catch(err => {
     console.error("Error cargando libros:", err);
