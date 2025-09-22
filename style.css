@@ -79,9 +79,7 @@ body {
 
 /* GRID / CARTAS */
 #results {
-  display: flex; /* Nuevo: usa Flexbox para el contenedor */
-  flex-wrap: wrap; /* Permite que los elementos se envuelvan a la siguiente línea */
-  gap: 15px; /* Espacio entre los libros */
+  /* Se elimina Flexbox aquí para que la clase .container funcione correctamente */
   margin-top: 10px;
 }
 
@@ -100,9 +98,11 @@ body {
   object-fit: cover;
   object-position: center;
   display:block;
+  /* Se elimina el transform aquí para que no haya zoom */
+  transition: none; 
 }
 .book-card:hover { transform: translateY(-6px); box-shadow: 0 12px 30px rgba(11,21,163,0.12); }
-.book-card:hover img { transform: none; }
+.book-card:hover img { transform: none; } /* Se elimina el zoom */
 
 .card-overlay-btn {
   position: absolute;
@@ -146,28 +146,36 @@ body {
   border-color: #e03e3e;
 }
 
-/* Tamaños de libros para cada pantalla */
-/* 5 libros por fila */
+/* responsive tweaks */
+/* Este código es el más importante para el grid */
 @media (min-width: 1200px) {
     .book-card {
-        flex-basis: calc(20% - 12px); /* 5 por fila - espacio */
+        flex: 0 0 19%;
+        max-width: 19%; /* Para 5 por fila con algo de espacio */
     }
 }
-/* 4 libros por fila */
 @media (min-width: 992px) and (max-width: 1199px) {
     .book-card {
-        flex-basis: calc(25% - 12px); /* 4 por fila - espacio */
+        flex: 0 0 24%;
+        max-width: 24%; /* 4 por fila */
     }
 }
-/* 3 libros por fila */
 @media (min-width: 768px) and (max-width: 991px) {
     .book-card {
-        flex-basis: calc(33.333% - 10px); /* 3 por fila - espacio */
+        flex: 0 0 32%;
+        max-width: 32%; /* 3 por fila */
     }
 }
-/* 2 libros por fila */
 @media (max-width: 767px) {
     .book-card {
-        flex-basis: calc(50% - 8px); /* 2 por fila - espacio */
+        flex: 0 0 48%;
+        max-width: 48%; /* 2 por fila en móviles */
     }
+}
+
+/* Nuevo contenedor con márgenes para publicidad */
+.container-con-margenes {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
 }
