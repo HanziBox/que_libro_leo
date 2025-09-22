@@ -32,22 +32,23 @@ body {
   text-transform: none;
 }
 
-/* Dropdown menu rosa con texto blanco (tonos como FiveBooks World) */
+/* Dropdown menu rosa pálido con texto en Montserrat y más light */
 .dropdown-menu {
-  background-color: var(--pink);
+  background-color: #fce4ec; /* Color rosa del sitio de ejemplo */
   border: none;
   box-shadow: 0 6px 20px rgba(0,0,0,0.12);
 }
 .dropdown-item {
-  color: white !important;
-  font-weight: 600;
+  color: #333 !important; /* Texto más oscuro para el contraste */
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400; /* Más light */
 }
 .dropdown-item:hover {
-  background-color: rgba(255,255,255,0.08);
-  color: white !important;
+  background-color: rgba(0,0,0,0.08);
+  color: #333 !important;
 }
 .dropdown-divider {
-  border-top: 1px solid rgba(255,255,255,0.08);
+  border-top: 1px solid rgba(0,0,0,0.08);
 }
 
 /* Hero / page title estilo FiveBooks: TÍTULO en sans negrita y rojo */
@@ -85,7 +86,7 @@ body {
 .book-card {
   position: relative;
   width: 100%;
-  height: 260px;          /* alto fijo para consistencia */
+  height: auto; /* Se elimina el alto fijo para que se mantenga la proporción */
   overflow: hidden;
   border-radius: 8px;
   background: #fff;
@@ -147,12 +148,12 @@ body {
 
 /* responsive tweaks */
 @media (min-width: 992px) {
-  .book-card { height: 280px; }
+  .book-card { height: auto; }
 }
 
 /* Nuevo contenedor con márgenes para publicidad */
 .container-con-margenes {
-    max-width: 900px; /* Ancho máximo del contenido principal */
+    max-width: 800px; /* Ancho más estrecho para más margen */
     margin-left: auto;
     margin-right: auto;
 }
