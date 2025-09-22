@@ -1,25 +1,122 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sitio de Libros</title>
-    <link rel="stylesheet" href="https://github.com/HanziBox/que_libro_leo/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dime qué libro leo</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Tu CSS -->
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-    <nav class="main-nav">
-        <ul class="nav-links">
-            <li><a href="/mood">Estado de humor</a></li>
-            <li><a href="/reader-type">Tipo de lector</a></li>
-            <li><a href="/country">País</a></li>
-            <li><a href="/celebrity">Celebrities</a></li>
-            <li><a href="/masterpieces">Indiscutibles</a></li>
-        </ul>
-    </nav>
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: var(--red);">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <span class="brand-logo me-2">📚</span>
+        <span class="brand-text">Dime qué libro leo</span>
+      </a>
 
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-end" id="mainNav">
+        <ul class="navbar-nav align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="#">Estado de humor</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Tipo de lector</a></li>
+
+          <!-- País (dropdown tipo FiveBooks → World) -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navPais" role="button" data-bs-toggle="dropdown" aria-expanded="false">País</a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navPais">
+              <li><a class="dropdown-item" href="#">España</a></li>
+              <li><a class="dropdown-item" href="#">México</a></li>
+              <li><a class="dropdown-item" href="#">Argentina</a></li>
+              <li><a class="dropdown-item" href="#">Colombia</a></li>
+              <li><a class="dropdown-item" href="#">Chile</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Otros países</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item"><a class="nav-link" href="#">Celebrities</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Indiscutibles</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO / SECCIÓN (estilo "World") -->
+  <main class="container mb-5">
+    <header class="mb-4">
+      <h1 class="page-title">World</h1>
+      <p class="page-subtitle">Last updated: September 22, 2025</p>
+      <p class="lead-intro">
+        Are you interested in books about China? The best Australian novels? Are you a fan of Swedish crime fiction? Or is it American politics you'd like to know more about? Our 'world' category divides up all our interviews and book recommendations by geography.
+      </p>
+    </header>
+
+    <!-- FILTROS (mantengo los tuyos; se pueden ocultar o mover) -->
+    <section id="filters" class="mb-4 row">
+      <div class="col-md-4 mb-3">
+        <p class="filter-label">Estado de ánimo:</p>
+        <div class="form-check"><input class="form-check-input" type="radio" name="mood" id="mood-alegre" value="alegre"><label class="form-check-label" for="mood-alegre">Alegre</label></div>
+        <div class="form-check"><input class="form-check-input" type="radio" name="mood" id="mood-reflexivo" value="reflexivo"><label class="form-check-label" for="mood-reflexivo">Reflexivo</label></div>
+        <div class="form-check"><input class="form-check-input" type="radio" name="mood" id="mood-aventurero" value="aventurero"><label class="form-check-label" for="mood-aventurero">Aventurero</label></div>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <p class="filter-label">Género:</p>
+        <div class="form-check"><input class="form-check-input" type="radio" name="genre" id="genre-ficcion" value="ficción"><label class="form-check-label" for="genre-ficcion">Ficción</label></div>
+        <div class="form-check"><input class="form-check-input" type="radio" name="genre" id="genre-fantasia" value="fantasía"><label class="form-check-label" for="genre-fantasia">Fantasía</label></div>
+        <div class="form-check"><input class="form-check-input" type="radio" name="genre" id="genre-clasico" value="clásico"><label class="form-check-label" for="genre-clasico">Clásico</label></div>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <p class="filter-label">Longitud:</p>
+        <div class="form-check"><input class="form-check-input" type="radio" name="length" id="length-corto" value="corto"><label class="form-check-label" for="length-corto">Corto</label></div>
+        <div class="form-check"><input class="form-check-input" type="radio" name="length" id="length-medio" value="medio"><label class="form-check-label" for="length-medio">Medio</label></div>
+        <div class="form-check"><input class="form-check-input" type="radio" name="length" id="length-largo" value="largo"><label class="form-check-label" for="length-largo">Largo</label></div>
+      </div>
+    </section>
+
+    <!-- RESULTADOS (grid Bootstrap) -->
+    <section id="results" class="row gy-4"></section>
+  </main>
+
+  <!-- MODAL UI (Bootstrap) -->
+  <div class="modal fade" id="book-modal" tabindex="-1" aria-labelledby="bookModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded shadow-lg">
+        <div class="modal-header border-0">
+          <h5 class="modal-title fw-bold" id="bookModalLabel"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body d-flex gap-3">
+          <img id="modal-cover" src="" alt="" class="rounded" style="width:120px; height:180px; object-fit:cover;">
+          <div>
+            <p id="modal-author" class="mb-1"></p>
+            <p id="modal-genre" class="mb-1"></p>
+            <p id="modal-mood" class="mb-1"></p>
+            <p id="modal-length" class="mb-1"></p>
+            <a id="modal-amazon" href="#" target="_blank" class="btn btn-sm btn-outline-light mt-2">Comprar en Amazon</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Tu JS -->
+  <script src="script.js"></script>
 </body>
 </html>
-
-
