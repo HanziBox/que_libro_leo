@@ -79,13 +79,15 @@ body {
 
 /* GRID / CARTAS */
 #results {
+  display: flex; /* Nuevo: usa Flexbox para el contenedor */
+  flex-wrap: wrap; /* Permite que los elementos se envuelvan a la siguiente línea */
+  gap: 15px; /* Espacio entre los libros */
   margin-top: 10px;
 }
 
-/* book-card adaptado a grid: ocupa 100% del column */
+/* book-card */
 .book-card {
   position: relative;
-  width: 18%;  /* Ancho para 5 libros por fila (dejando un pequeño espacio) */
   height: auto;
   overflow: hidden;
   background: #fff;
@@ -94,14 +96,13 @@ body {
 }
 .book-card img {
   width: 100%;
-  height: auto; /* Se elimina el alto fijo para que se mantenga la proporción */
+  height: auto;
   object-fit: cover;
   object-position: center;
   display:block;
-  transition: transform .35s ease;
 }
 .book-card:hover { transform: translateY(-6px); box-shadow: 0 12px 30px rgba(11,21,163,0.12); }
-.book-card:hover img { transform: none; } /* Se elimina el efecto de zoom */
+.book-card:hover img { transform: none; }
 
 .card-overlay-btn {
   position: absolute;
@@ -110,13 +111,13 @@ body {
   transform: translateX(-50%);
   display: none;
   padding: 6px 12px;
-  background-color: var(--red); /* Fondo rojo */
-  color: #fff; /* Texto blanco */
+  background-color: var(--red);
+  color: #fff;
   border-radius: 4px;
   font-weight: 600;
-  font-size: 0.9rem; /* Tamaño de fuente más pequeño */
+  font-size: 0.9rem;
   font-family: 'Montserrat', sans-serif;
-  white-space: nowrap; /* Evita que el texto se parta en dos líneas */
+  white-space: nowrap;
   text-transform: uppercase;
 }
 .book-card:hover .card-overlay-btn { display: inline-block; }
@@ -128,7 +129,7 @@ body {
 .modal-title {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
-  color: var(--red) !important; /* título del modal rojo */
+  color: var(--red) !important;
 }
 .modal-body p {
   color: var(--blue);
@@ -145,14 +146,28 @@ body {
   border-color: #e03e3e;
 }
 
-/* responsive tweaks */
-@media (min-width: 992px) {
-  .book-card { height: auto; }
+/* Tamaños de libros para cada pantalla */
+/* 5 libros por fila */
+@media (min-width: 1200px) {
+    .book-card {
+        flex-basis: calc(20% - 12px); /* 5 por fila - espacio */
+    }
 }
-
-/* Nuevo contenedor con márgenes para publicidad */
-.container-con-margenes {
-    max-width: 800px; /* Ancho más estrecho para más margen */
-    margin-left: auto;
-    margin-right: auto;
+/* 4 libros por fila */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .book-card {
+        flex-basis: calc(25% - 12px); /* 4 por fila - espacio */
+    }
+}
+/* 3 libros por fila */
+@media (min-width: 768px) and (max-width: 991px) {
+    .book-card {
+        flex-basis: calc(33.333% - 10px); /* 3 por fila - espacio */
+    }
+}
+/* 2 libros por fila */
+@media (max-width: 767px) {
+    .book-card {
+        flex-basis: calc(50% - 8px); /* 2 por fila - espacio */
+    }
 }
