@@ -149,3 +149,10 @@ body {
 @media (min-width: 992px) {
   .book-card { height: 280px; }
 }
+
+/* Nuevo contenedor con márgenes para publicidad */
+.container-con-margenes {
+    max-width: 900px; /* Ancho máximo del contenido principal */
+    margin-left: auto;
+    margin-right: auto;
+}
