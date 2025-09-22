@@ -19,65 +19,44 @@
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNavAlt">
         <ul class="navbar-nav">
-          <li class="nav-item"><a class="nav-link active" href="#">Inicio</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Sobre</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Contacto</a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Estado de humor</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Tipo de lector</a>
+          </li>
+          <!-- Submenú País -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPais" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              País
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownPais">
+              <li><a class="dropdown-item" href="#">España</a></li>
+              <li><a class="dropdown-item" href="#">México</a></li>
+              <li><a class="dropdown-item" href="#">Argentina</a></li>
+              <li><a class="dropdown-item" href="#">Colombia</a></li>
+              <li><a class="dropdown-item" href="#">Chile</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Otros países</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Celebrities</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Indiscutibles</a>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
 
   <div class="container">
-    <!-- Filtros -->
-    <div id="filters" class="mb-4 row">
-      <div class="col-md-4 mb-3">
-        <p class="filter-label">Estado de ánimo:</p>
-        <div class="form-check"><input class="form-check-input" type="radio" name="mood" value="alegre" id="mood-alegre"><label class="form-check-label" for="mood-alegre">Alegre</label></div>
-        <div class="form-check"><input class="form-check-input" type="radio" name="mood" value="reflexivo" id="mood-reflexivo"><label class="form-check-label" for="mood-reflexivo">Reflexivo</label></div>
-        <div class="form-check"><input class="form-check-input" type="radio" name="mood" value="aventurero" id="mood-aventurero"><label class="form-check-label" for="mood-aventurero">Aventurero</label></div>
-      </div>
-      <div class="col-md-4 mb-3">
-        <p class="filter-label">Género:</p>
-        <div class="form-check"><input class="form-check-input" type="radio" name="genre" value="ficción" id="genre-ficcion"><label class="form-check-label" for="genre-ficcion">Ficción</label></div>
-        <div class="form-check"><input class="form-check-input" type="radio" name="genre" value="fantasía" id="genre-fantasia"><label class="form-check-label" for="genre-fantasia">Fantasía</label></div>
-        <div class="form-check"><input class="form-check-input" type="radio" name="genre" value="clásico" id="genre-clasico"><label class="form-check-label" for="genre-clasico">Clásico</label></div>
-      </div>
-      <div class="col-md-4 mb-3">
-        <p class="filter-label">Longitud:</p>
-        <div class="form-check"><input class="form-check-input" type="radio" name="length" value="corto" id="length-corto"><label class="form-check-label" for="length-corto">Corto</label></div>
-        <div class="form-check"><input class="form-check-input" type="radio" name="length" value="medio" id="length-medio"><label class="form-check-label" for="length-medio">Medio</label></div>
-        <div class="form-check"><input class="form-check-input" type="radio" name="length" value="largo" id="length-largo"><label class="form-check-label" for="length-largo">Largo</label></div>
-      </div>
-    </div>
-
-    <!-- Resultados -->
-    <div id="results" class="row gy-4"></div>
-  </div>
-
-  <!-- Modal mejorado -->
-  <div class="modal fade" id="book-modal" tabindex="-1" aria-labelledby="bookModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content rounded shadow">
-        <div class="modal-header border-0">
-          <h5 class="modal-title fw-bold" id="bookModalLabel"></h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-        </div>
-        <div class="modal-body d-flex gap-3">
-          <img id="modal-cover" src="" alt="" class="rounded" style="width:100px; height:150px; object-fit:cover;">
-          <div>
-            <p id="modal-author" class="mb-1 text-muted"></p>
-            <p id="modal-genre" class="mb-1 text-muted"></p>
-            <p id="modal-mood" class="mb-1 text-muted"></p>
-            <p id="modal-length" class="mb-1 text-muted"></p>
-            <a id="modal-amazon" href="#" target="_blank" class="btn btn-primary mt-2">Comprar en Amazon</a>
-          </div>
-        </div>
-      </div>
-    </div>
+    <h1 class="mb-4">Bienvenido a Dime qué libro leo</h1>
+    <p>Usa el menú superior para explorar diferentes colecciones de libros.</p>
   </div>
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="script.js"></script>
 </body>
 </html>
