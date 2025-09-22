@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dime qué leo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>📚 Dime qué leo</h1>
+
+    <!-- Filtros -->
+    <div class="filters">
+      <div>
+        <p>Estado de ánimo:</p>
+        <label><input type="radio" name="mood" value="alegre"> Alegre</label>
+        <label><input type="radio" name="mood" value="reflexivo"> Reflexivo</label>
+        <label><input type="radio" name="mood" value="romántico"> Romántico</label>
+        <label><input type="radio" name="mood" value="aventurero"> Aventurero</label>
+      </div>
+
+      <div>
+        <p>Género:</p>
+        <label><input type="radio" name="genre" value="fantasía"> Fantasía</label>
+        <label><input type="radio" name="genre" value="clásico"> Clásico</label>
+        <label><input type="radio" name="genre" value="ficción"> Ficción</label>
+        <label><input type="radio" name="genre" value="no-ficción"> No Ficción</label>
+      </div>
+
+      <div>
+        <p>Longitud:</p>
+        <label><input type="radio" name="length" value="corto"> Corto</label>
+        <label><input type="radio" name="length" value="medio"> Medio</label>
+        <label><input type="radio" name="length" value="largo"> Largo</label>
+      </div>
+    </div>
+
+    <!-- Resultados -->
+    <div id="results" class="results">
+      <p>Selecciona tus preferencias para descubrir libros...</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
